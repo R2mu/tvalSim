@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Distribution Visualization</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstat@1.9.3/dist/jstat.min.js"></script>
+
+    <style>
+        .container {
+            display: flex;
+        }
+
+        body {
+             font-family: 'Courier New', monospace;
+             background-color: #fcfcfc; /* Dark background for the whole page */
+             color: #000000; /* Light text color */
+            }
+
+        h1 {
+            color: #ffb74d; /* Orange color for the title */
+            text-align: center;
+        }
+
+        .sliders-container {
+            display: flex;
+            flex-direction: column;
+            padding-right: 20px;
+            padding-left: 5px;
+            border: 1px solid #666666;
+        }
+        
+        .chart-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            width: 900px;
+            height:400px;
+        }
+
+
+
+        #slope-chart {
+            width: 35%;
+            height: 400px; 
+        }
+
+        #mean-difference-chart {
+            width: 65%;
+            height: 400px; 
+        }
+
+        #scatter-plot {
+            width: 35%;
+            height: 300px
+        }
+    </style>
+  <!--  <link rel="stylesheet" href="week12.css"> -->
+ <link rel="stylesheet" href="brownian.css">
+</head>
+<body>
+    <h1>T-Distribution Visualization</h1>
+    
+    <div class="container">
+        <div class="sliders-container">
+        <label for="participants">Number of Participants (5 - 50):</label>
+        <input type="range" id="participants" name="participants" min="5" max="50" value="10">
+        <output for="participants" id="participants-output">10</output>
+
+        <label for="mean-pre">Mean of Pre (40 - 60):</label>
+        <input type="range" id="mean-pre" name="mean-pre" min="40" max="60" value="50" step="1">
+        <output for="mean-pre" id="mean-pre-output">50</output>
+
+        <label for="mean-change">Mean Change (-10 - 10):</label>
+        <input type="range" id="mean-change" name="mean-change" min="-10" max="10" value="0" step="0.1">
+        <output for="mean-change" id="mean-change-output">0</output>
+
+        <label for="pre-std-dev">Pre SD (1 - 10):</label>
+        <input type="range" id="pre-std-dev" name="pre-std-dev" min="1" max="10" value="5" step="0.1">
+        <output for="pre-std-dev" id="pre-std-dev-output">5</output>
+
+        <label for="rho">Rho (-1 - 1):</label>
+        <input type="range" id="rho" name="rho" min="-1" max="1" value="0" step="0.01">
+        <output for="rho" id="rho-output">0</output>
+        
+        <label for="t">.</label>
+        <button id="toggle-tvalue">Toggle T-Value</button>
+        <label for="t">.</label>
+        <input type="range" id="update-speed" min="50" max="3000" value="500">
+        <label for="t">.</label>
+        <label for="update-speed">Update Speed (ms)</label>
+
+        <button id="simulation-toggle">Start Simulation</button>
+ 
+    </div>
+    <div class="charts-container">
+        <div class="chart-container">
+            <div id="slope-chart">
+                <svg width="100%" height="400px"></svg>
+            </div>
+        
+            <div id="mean-difference-chart">
+                <p>
+                    <input type="radio" id="mean_diff" name="analysis_type" value="mean_diff" checked = true> mean_diff
+                    <input type="radio" id="t_value" name="analysis_type" value="t_value">t_value
+                    <input type="radio" id="p_value" name="analysis_type" value="p_value">p_value           
+                    <input type="radio" id="cohens_d" name="analysis_type" value="cohens_d"> cohens_d
+                </p>
+                <svg width="100%" height="400px"></svg>
+            </div>
+        </div>
+        <div id="scatter-plot">
+            <svg width="100%" height="100%"></svg>
+        </div>
+</div>
+
+    <script src="Week12a.js"></script>
+
+</body>
+</html>
