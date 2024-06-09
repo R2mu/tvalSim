@@ -241,7 +241,7 @@ function addMeanDifferenceCircle(meanDifference, stdDevDifference, Tval, pval, c
     const criticalTValue = jStat.studentt.inv(quantile, dof);
     let alpha = 0.05;
 
-    let critVal = jStat.studentt.inv(1 - alpha / 2, dof);
+    let critVal = jStat.studentt.inv(1 - alpha / 2, dof-1);
     let sem = array_sd / Math.sqrt(n);
     let moe = critVal * sem;
     let lcl = jStat.percentile(md_dist, 0.025);
@@ -328,8 +328,8 @@ function addMeanDifferenceCircle(meanDifference, stdDevDifference, Tval, pval, c
     errorBarG.append('line')
         .attr('x1', 0)
         .attr('x2', 0)
-        .attr('y1', meanDiffChartYScale(meanDifference - errBar))
-        .attr('y2', meanDiffChartYScale(meanDifference + errBar))
+        .attr('y1', meanDiffChartYScale(meanDifference - moe))
+        .attr('y2', meanDiffChartYScale(meanDifference + moe))
         .attr('stroke', 'white')
         .attr('stroke-width', 1)
         .transition()
