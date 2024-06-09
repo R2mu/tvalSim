@@ -242,7 +242,7 @@ function addMeanDifferenceCircle(meanDifference, stdDevDifference, Tval, pval, c
     let alpha = 0.05;
 
     let critVal = jStat.studentt.inv(1 - alpha / 2, dof-1);
-    let sem = array_sd / Math.sqrt(n);
+    let sem = stdDevDifference  / Math.sqrt(n);
     let moe = critVal * sem;
     let lcl = jStat.percentile(md_dist, 0.025);
     let ucl = jStat.percentile(md_dist, 0.975);
@@ -598,13 +598,13 @@ function updateSlopeChart(useTValue) {
 
     const md = Number((meanPostValues - meanPreValues).toFixed(1));
     const differences = data.map(d => d.post - d.pre);
-    const meanDifference = Math.round(md * 10) / 10;
+    const meanDifference = md.toFixed(4);
     const stdDevDifference = standardDeviation(differences);
-    const Tval = Math.round(meanDifference / (stdDevDifference / Math.sqrt(n)) * 10) / 10;
+    const Tval = (meanDifference / (stdDevDifference / Math.sqrt(n))).toFixed(5);
     const cd = Number((md / ((preStdDevValues + postStdDevValues) / 2)).toFixed(1));
     const dfm1 = n - 1;
-    const p = 1 - jStat.studentt.cdf(Math.abs(Tval), dfm1).toFixed(3);
-    const pval = Number((p * 2).toFixed(3));
+    const p = 1 - jStat.studentt.cdf(Math.abs(Tval), dfm1).toFixed(4);
+    const pval = Number((p * 2).toFixed(4));
 
     let selectedRadioValue = getSelectedRadioButtonValue("analysis_type");
 
