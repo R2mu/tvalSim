@@ -235,7 +235,8 @@ function addMeanDifferenceCircle(meanDifference, stdDevDifference, Tval, pval, c
     let array_mu = d3.mean(md_dist);
     let array_sd = standardDeviation(md_dist);
     const n = parseInt(d3.select('#participants').property('value'));
-    const dof = n - 1;
+    //const dof = n - 1;
+    const dof = n;
     const quantile = 0.975;
     const criticalTValue = jStat.studentt.inv(quantile, dof);
     let alpha = 0.05;
