@@ -267,7 +267,8 @@ function addMeanDifferenceCircle(meanDifference, stdDevDifference, Tval, pval, c
 
     const y = test;
     const xOffset = 10; // This value determines the horizontal distance between circles
-    let errBar = selectedRadioValue !== "mean_diff" ? 0 : stdDevDifference;
+    //stdDevDifference
+    let errBar = selectedRadioValue !== "mean_diff" ? 0 : sem*critVal;
 
     let color = (pval <= 0.05 ? "yellow" : "gray");
 
