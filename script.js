@@ -286,7 +286,7 @@ function animateNewMeanDifferencePoint(simMeanDiff, simTval, simPval, simCd, sim
                 const ciBarScreenLength = Math.abs(meanDiffChartYScale(yValueForPlot) - meanDiffChartYScale(yValueForPlot - moe_single_sim));
                 const tempErrorBar = meanDiffChartG.append('line')
                     .attr('class', 'error-bar temp-error-bar')
-                    .attr('stroke', 'white')
+                    .attr('stroke', 'black')
                     .attr('stroke-width', 1)
                     .attr('x1', initialCxForAnimation)
                     .attr('x2', initialCxForAnimation)
