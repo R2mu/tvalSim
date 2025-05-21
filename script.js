@@ -257,7 +257,7 @@ function animateNewMeanDifferencePoint(simMeanDiff, simTval, simPval, simCd, sim
 
     updateCounts(valueForCountMap, selectedRadioValue);
     const finalCx = meanDiffChartInnerWidth - (getCircleCount(valueForCountMap, selectedRadioValue) * xOffset);
-    const circleColor = (simPval <= 0.05 ? "light blue" : "gray");
+    const circleColor = (simPval <= 0.05 ? "blue" : "gray");
 
     const initialCxForAnimation = 0;
     const dotPlotCy = meanDiffChartYScale(yValueForPlot);
@@ -373,7 +373,7 @@ function redrawMeanDifferenceChart() {
 
         updateCounts(valueForCountMap, selectedRadioValue);
         const cxPos = meanDiffChartInnerWidth - (getCircleCount(valueForCountMap, selectedRadioValue) * xOffset);
-        let circleColor = (simPval <= 0.05 ? "yellow" : "gray");
+        let circleColor = (simPval <= 0.05 ? "blue" : "gray");
 
         meanDiffChartG.append('circle')
             .attr('class', 'mean-difference-circle static-dot')
